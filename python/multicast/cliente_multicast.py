@@ -9,6 +9,9 @@ PORTA = 4446 + OFFSET
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
 sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+# macOS/BSD: permite vários clientes escutando a MESMA porta multicast
+if hasattr(socket, "SO_REUSEPORT"):
+    sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
 sock.bind(("", PORTA))
 
 grupo = socket.inet_aton(GRUPO_MULTICAST)
