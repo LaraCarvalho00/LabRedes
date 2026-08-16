@@ -16,6 +16,7 @@ public class ServidorTCP {
                 System.out.println("[TCP] Cliente conectado: " + cliente.getRemoteSocketAddress());
                 String mensagem;
                 while ((mensagem = entrada.readLine()) != null) {
+                    mensagem = mensagem.trim();
                     System.out.println("[TCP] Recebido: " + mensagem);
                     if (mensagem.equalsIgnoreCase("sair")) {
                         saida.println("Encerrando conexão. Até mais!");
