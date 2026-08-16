@@ -69,6 +69,13 @@ javac -d out src/main/java/MuralCliente.java && java -cp out MuralCliente
 
 ## Evidências
 
-Salve um print por protocolo/linguagem em `evidencias/<protocolo>/<protocolo>-<linguagem>.png`,
-mostrando a execução real (servidor + cliente(s) trocando mensagens) e a saída de
-`date` (macOS/Linux) ou `Get-Date` (PowerShell) no canto do terminal.
+Os prints de execução (servidor + cliente(s) trocando mensagens, com data/hora
+visível no terminal) já estão salvos em `evidencias/<protocolo>/`, um por
+protocolo/linguagem:
+
+| Protocolo | Java | Python |
+|---|---|---|
+| TCP | `evidencias/tcp/tcp-java.png` | `evidencias/tcp/tcp-python.png` |
+| UDP | `evidencias/udp/udp-java.png` | `evidencias/udp/udp-python.png` |
+| Multicast | `evidencias/multicast/multicast-java.png` | `evidencias/multicast/multicast-python.png` |
+| WebSocket | `evidencias/websocket/websocket-java.png` | `evidencias/websocket/websocket-python.png` |
