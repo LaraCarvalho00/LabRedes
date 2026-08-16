@@ -71,26 +71,26 @@ case "$LANG" in
     case "$PROTO" in
       tcp)
         javac java/tcp/*.java
-        [ "$PAPEL" = "servidor" ] && exec java -cp java/tcp ServidorTCP
-        exec java -cp java/tcp ClienteTCP ;;
+        [ "$PAPEL" = "servidor" ] && exec java -Dstdout.encoding=UTF-8 -Dstderr.encoding=UTF-8 -cp java/tcp ServidorTCP
+        exec java -Dstdout.encoding=UTF-8 -Dstderr.encoding=UTF-8 -cp java/tcp ClienteTCP ;;
       udp)
         javac java/udp/*.java
-        [ "$PAPEL" = "servidor" ] && exec java -cp java/udp ServidorUDP
-        exec java -cp java/udp ClienteUDP ;;
+        [ "$PAPEL" = "servidor" ] && exec java -Dstdout.encoding=UTF-8 -Dstderr.encoding=UTF-8 -cp java/udp ServidorUDP
+        exec java -Dstdout.encoding=UTF-8 -Dstderr.encoding=UTF-8 -cp java/udp ClienteUDP ;;
       multicast)
         javac java/multicast/*.java
-        [ "$PAPEL" = "servidor" ] && exec java -cp java/multicast ServidorMulticast
-        exec java -cp java/multicast ClienteMulticast ;;
+        [ "$PAPEL" = "servidor" ] && exec java -Dstdout.encoding=UTF-8 -Dstderr.encoding=UTF-8 -cp java/multicast ServidorMulticast
+        exec java -Dstdout.encoding=UTF-8 -Dstderr.encoding=UTF-8 -cp java/multicast ClienteMulticast ;;
       websocket)
         if [ ! -d java/websocket/lib ]; then
             echo "Libs não encontradas. Rode antes: ./scripts/lab.sh setup-ws-java"; exit 1
         fi
         if [ "$PAPEL" = "servidor" ]; then
             javac -cp "java/websocket/lib/*" -d java/websocket/out java/websocket/src/main/java/MuralServidor.java
-            exec java -cp "java/websocket/out:java/websocket/lib/*" MuralServidor
+            exec java -Dstdout.encoding=UTF-8 -Dstderr.encoding=UTF-8 -cp "java/websocket/out:java/websocket/lib/*" MuralServidor
         else
             javac -d java/websocket/out java/websocket/src/main/java/MuralCliente.java
-            exec java -cp java/websocket/out MuralCliente
+            exec java -Dstdout.encoding=UTF-8 -Dstderr.encoding=UTF-8 -cp java/websocket/out MuralCliente
         fi ;;
       *) echo "Protocolo inválido: $PROTO"; exit 1 ;;
     esac ;;
